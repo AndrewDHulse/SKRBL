@@ -1,0 +1,24 @@
+const Post = require('../models/post');
+
+async function show(req, res) {
+    const post = await Post.findById(req.params.id);
+    res.render('posts/show', {title: 'Post View', post,});
+};
+
+function newPost(req, res){
+    res.render('posts/new', {errorMsg: ''});
+};
+
+
+async function index(req, res){
+    const posts = await Post.find({});
+    res.render('posts/index', {title: 'All Posts', posts});
+};
+
+
+module.exports={
+    new: newPost,
+    index,
+    show,
+    
+};
