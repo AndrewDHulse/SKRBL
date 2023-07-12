@@ -5,10 +5,10 @@ const passport = require('passport');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.redirect('/posts');
 });
 
-//google oauth route
+//google oauth login route
 router.get('/auth/google', passport.authenticate(
   'google',
   {
@@ -20,15 +20,15 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect: '/movies',
-    failureRedirect: '/movies'
+    successRedirect: '/posts',
+    failureRedirect: '/posts',
   }
 ));
 
 // OAuth logout route
 router.get('/logout', function(req, res){
   req.logout(function() {
-    res.redirect('/movies');
+    res.redirect('/posts');
   });
 });
 
