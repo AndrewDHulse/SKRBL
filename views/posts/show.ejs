@@ -6,30 +6,25 @@
 <p><%= post.prompt.content %></p>
 <div>
     <h2><%= post.title%></h2>
-    <h5>SKRBLed by <img alt="avatar" src="<%= post.userAvatar %>" referrerpolicy="no-referrer" ><%= post.userName %></h5>
+    <h5>SKRBLed by <img alt="avatar" src="<%= post.user.avatar %>" referrerpolicy="no-referrer"> <%= post.user.name %></h5>
     <p><%= post.content%></p>
-    <%if (user?._id.equals(post.user)) { %>
-        <form action="/posts/<%=post._id%>?_method=DELETE" method="POST">
-            <button type="submit">X</button>
-        </form>
-        <a href= "/posts/<%= post._id %>/edit">Edit post</a>
-    <% }; %>
-
+    <br>
+        <%if (user && user._id.equals(post.user._id)) { %>
+            <form action="/posts/<%=post._id%>?_method=DELETE" method="POST">
+                <button type="submit">DELETE</button>
+            </form>
+            <a href= "/posts/<%= post._id %>/edit">Edit post</a>
+        <% }; %>
+    <br>
 <% if (post.comments.length) { %>
     <table>
-        <thead>
-            <tr>
-                <th>User</th>
-                <th>Comment</th>
-            </tr>
-        </thead>
         <tbody>
             <% post.comments.forEach(function(c) { %>
                 <tr>
                     <td><img alt="avatar" src="<%= c.userAvatar %>" referrerpolicy="no-referrer" ><%= c.userName %></td>
                     <td><%=c.content%></td>
                     <td>    
-                    <% if (user?._id.equals(c.user)) { %>
+                    <% if (user && user._id.equals(c.user._id)) { %>
                             <form action ="/comments/<%=c._id%>?_method=DELETE" method="POST">
                                 <button type="submit">X</button>
                             </form>

@@ -12,8 +12,6 @@ const commentSchema = new Schema({
         ref: 'User',
         required: true
     },
-    userName: String,
-    userAvatar: String
 }, {
     timestamps: true
 });
@@ -38,8 +36,6 @@ const postSchema = new Schema({
         required: true
     },
     comments: [commentSchema],
-    userName: String,
-    userAvatar: String
 }, {
     timestamps: true
 });

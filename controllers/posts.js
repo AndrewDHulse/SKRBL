@@ -16,7 +16,7 @@ module.exports = {
 async function index(req, res){
     try{
     const posts = await Post.find({})
-    .populate('user', 'name')
+    .populate('user')
     .populate('prompt')
     res.render('posts/index', {posts});
     } catch (err) {
@@ -29,8 +29,9 @@ async function show(req, res) {
     try{
     const post = await Post.findById(req.params.id)
     .populate('prompt')
-    .populate('user', 'name');
-    res.render('posts/show', {title: 'Post View', post, comment: {} });
+    .populate('user');
+    
+    res.render('posts/show', { title: 'Post View', post, comment: {}, user: req.user });
     } catch (err) {
         console.log(err);
         res.render('/posts')
@@ -70,13 +71,20 @@ async function create(req, res){
 }
 
 async function update(req, res){
-    Post.update(req.params.id, req.body);
-    res.redirect(`/posts/${req.params.id}`);
+    try{
+        await Post.updateOne({_id: req.params.id}, req.body);
+        res.redirect(`/posts/${req.params.id}`);
+    }catch (err){
+        console.log(err);
+        res.redirect('/posts')
+    }
 }
 
 async function edit(req, res){
     try{
-        const post = await Post.findById(req.params.id).populate('prompt');
+        const post = await Post.findById(req.params.id)
+        .populate('prompt')
+        .populate('user');
         const prompt= post.prompt;
         res.render('posts/edit', {post, prompt});
     } catch (err){
