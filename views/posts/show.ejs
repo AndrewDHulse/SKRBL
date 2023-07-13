@@ -21,7 +21,8 @@
         <tbody>
             <% post.comments.forEach(function(c) { %>
                 <tr>
-                    <td><img alt="avatar" src="<%= c.userAvatar %>" referrerpolicy="no-referrer" ><%= c.userName %></td>
+                    <td>
+                        <img alt="avatar" src="<%= c.user.avatar %>" referrerpolicy="no-referrer" ><%= c.user.name %></td>
                     <td><%=c.content%></td>
                     <td>    
                     <% if (user && user._id.equals(c.user._id)) { %>
