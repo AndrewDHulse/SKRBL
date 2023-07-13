@@ -1,5 +1,6 @@
 const Post = require('../models/post');
 const Prompt = require('../models/prompt');
+let randomPrompt = null;
 
 module.exports = {
     index,
@@ -11,7 +12,6 @@ module.exports = {
     update
 };
 
-let randomPrompt = null;
 
 async function index(req, res){
     try{
