@@ -2,7 +2,12 @@
 
 <h1>THIS IS POSTS/INDEX</h1>
 
-<!--When styling, make this look like a button-->
-<a href="posts/new">Make a post</a>
+<div>
+    <%posts.forEach(function(p) { %>
+        <h2><a href="/posts/<%= p._id %>"> <%= p.title %> </a> </h2>
+        <h5>SKRBLed by <%=p.user.name%></h5>
+        <p><%= p.content %></p>
+    <% }) %>
+</div>
 
 <%- include('../partials/footer') %>

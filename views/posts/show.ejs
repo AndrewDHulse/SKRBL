@@ -2,6 +2,53 @@
 
 <h1>THIS IS POSTS/SHOW </h1>
 
+<h2>Prompted by:</h2>
+<p><%= post.prompt.content %></p>
+<div>
+    <h2><%= post.title%></h2>
+    <h5>SKRBLed by <img alt="avatar" src="<%= post.userAvatar %>" referrerpolicy="no-referrer" ><%= post.userName %></h5>
+    <p><%= post.content%></p>
+    <%if (user?._id.equals(post.user)) { %>
+        <form action="/posts/<%=post._id%>?_method=DELETE" method="POST">
+            <button type="submit">X</button>
+        </form>
+        <a href= "/posts/<%= post._id %>/edit">Edit post</a>
+    <% }; %>
 
+<% if (post.comments.length) { %>
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Comment</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% post.comments.forEach(function(c) { %>
+                <tr>
+                    <td><img alt="avatar" src="<%= c.userAvatar %>" referrerpolicy="no-referrer" ><%= c.userName %></td>
+                    <td><%=c.content%></td>
+                    <td>    
+                    <% if (user?._id.equals(c.user)) { %>
+                            <form action ="/posts/<%=c._id%>?_method=DELETE" method="POST">
+                                <button type="submit">X</button>
+                            </form>
+                        <% } %>
+                    </td>
+                </tr>
+            <% }); %>
+            <tr>
+            </tr>
+        </tbody>
+    </table>
+    <% } else { %>
+        <h5>Be the first to comment on this SKRBL!</h5>
+    <% } %>
+</div>
+
+<form action="/posts/<%= post._id %>" method="POST">
+    <textarea name="content"></textarea>
+    <button type="submit">Comment</button>
+</form>
 
 <%- include('../partials/footer') %>

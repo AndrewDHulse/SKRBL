@@ -6,38 +6,48 @@ module.exports = {
     show,
     new: newPost,
     create,
-    delete: deletePost
+    edit,
+    delete: deletePost,
+    update
 };
 
-//store random prompt
 let randomPrompt = null;
 
 async function index(req, res){
-    const posts = await Post.find({});
+    try{
+    const posts = await Post.find({})
+    .populate('user', 'name')
+    .populate('prompt')
     res.render('posts/index', {posts});
+    } catch (err) {
+        console.log(err)
+        res.render('/posts')
+    }
 };
 
 async function show(req, res) {
-    const post = await Post.findById(req.params.id);
+    try{
+    const post = await Post.findById(req.params.id)
+    .populate('prompt')
+    .populate('user', 'name');
     res.render('posts/show', {title: 'Post View', post,});
-};
+    } catch (err) {
+        console.log(err);
+        res.render('/posts')
+    }
+}
 
 async function newPost(req, res){
     try{
-        //ensures randomPrompt is empty first
         if (!randomPrompt){
-            //grab a semi random prompt, limited to 1 
             randomPrompt = await Prompt.aggregate([{ $sample: {size: 1} }]);
         }
-        const promptTitle = randomPrompt[0].title;
-        const promptContent = randomPrompt[0].content;
-
-        res.render('posts/new', {promptTitle, promptContent});
+        const prompt = randomPrompt[0];
+        res.render('posts/new', {prompt, promptTitle: prompt.title, promptContent: prompt.content});
     } catch(err) {
         console.log(err);
         res.render('posts/new', {errorMsg: err.message});
     }
-
 };
 
 async function create(req, res){
@@ -49,8 +59,8 @@ async function create(req, res){
         }
         const promptTitle = randomPrompt[0].title;
         const promptContent = randomPrompt[0].content;
-
-        const post ={...req.body, promptTitle, promptContent};
+        const prompt= randomPrompt[0]._id;
+        const post = await Post.create(req.body);
         await Post.create(post);
         res.redirect('/posts');
     } catch (err){
@@ -59,7 +69,28 @@ async function create(req, res){
     }
 }
 
+async function update(req, res){
+    Post.update(req.params.id, req.body);
+    res.redirect(`/posts/${req.params.id}`);
+}
+
+async function edit(req, res){
+    try{
+        const post = await Post.findById(req.params.id).populate('prompt');
+        const prompt= post.prompt;
+        res.render('posts/edit', {post, prompt});
+    } catch (err){
+        console.log(err);
+        res.redirect('/posts')
+    }
+}
+
 async function deletePost(req, res){
-    Post.deleteOne(req.params.id);
+    try{
+    await Post.deleteOne({_id: req.params.id});
     res.redirect('/posts');
+    }catch (err){
+        console.log(err);
+        res.redirect('/posts')
+    }
 }

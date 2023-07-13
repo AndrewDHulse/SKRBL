@@ -1,0 +1,18 @@
+<%-include('../partials/header')%>
+
+<h2>this is posts/edit</h2>
+
+<%if (user?._id.equals(post.user)) { %>
+    <form action="/posts/<%=post._id%>?_method=PUT" method="POST">
+        <p>Prompt Content: <%= post.prompt.content %></p>
+        <input type="hidden" name = "prompt" value="<%= prompt._id%>">
+        <input type="hidden" name="user" value="<%= user._id %>">
+        <label> SKRBL Title
+            <input type="text" name="title" value="<%=post.title%>">
+        </label>
+        <textarea name="content" value="<%=post.content%>"></textarea>
+        <button type="submit">Update SKRBL</button>
+    </form>
+<% } %>
+
+<%-include('../partials/footer')%>
