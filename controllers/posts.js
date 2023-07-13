@@ -30,7 +30,7 @@ async function show(req, res) {
     const post = await Post.findById(req.params.id)
     .populate('prompt')
     .populate('user', 'name');
-    res.render('posts/show', {title: 'Post View', post,});
+    res.render('posts/show', {title: 'Post View', post, comment: {} });
     } catch (err) {
         console.log(err);
         res.render('/posts')
