@@ -9,7 +9,7 @@ module.exports = {
     create,
     edit,
     delete: deletePost,
-    update
+    update,
 };
 
 
@@ -25,18 +25,19 @@ async function index(req, res){
     }
 };
 
+
 async function show(req, res) {
     try{
     const post = await Post.findById(req.params.id)
     .populate('prompt')
     .populate('user');
-    
-    res.render('posts/show', { title: 'Post View', post, comment: {}, user: req.user });
+    res.render('posts/show', { title: 'Post View', post, comment: {}, user: req.user});
     } catch (err) {
         console.log(err);
         res.render('/posts')
     }
 }
+
 
 async function newPost(req, res){
     try{
@@ -44,6 +45,7 @@ async function newPost(req, res){
             randomPrompt = await Prompt.aggregate([{ $sample: {size: 1} }]);
         }
         const prompt = randomPrompt[0];
+        randomPrompt= null;
         res.render('posts/new', {prompt, promptTitle: prompt.title, promptContent: prompt.content});
     } catch(err) {
         console.log(err);

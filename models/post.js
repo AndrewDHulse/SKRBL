@@ -12,6 +12,7 @@ const commentSchema = new Schema({
         ref: 'User',
         required: true
     },
+        userName: String,
 }, {
     timestamps: true
 });

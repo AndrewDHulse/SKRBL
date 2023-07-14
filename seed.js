@@ -1,8 +1,8 @@
 require('dotenv').config();
-require('config/database');
+require('./config/database');
 
 const Prompt = require('./models/prompt');
-const Post = require ('models/post');
+const Post = require ('./models/post');
 const data = require('./data');
 
 (async function() {
@@ -12,7 +12,7 @@ const data = require('./data');
     console.log(results);
 
     results = await Promise.all([
-        Prompt.create(data.prompt),
+        Prompt.create(data.prompts),
 ]);
 console.log('created prompts:', results[0]);
 

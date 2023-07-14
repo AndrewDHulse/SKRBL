@@ -1,4 +1,4 @@
-exports.prompts- [
+exports.prompts= [
     {
     title: 'Eavesdropping',
     content: 'Write about a time you overheard something you were not meant to hear'

@@ -7,14 +7,53 @@ a {
   color: #00B7FF;
 }
 
+nav{
+  position: ;
+}
+
  /* login info */
 .login {
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
   height: 34px;
 }
 
 .login img {
   height: 30px;
+}
+
+.header{
+  position: sticky;
+
+}
+
+.footer{
+  position: sticky;
+}
+
+#post-btn{
+  margin: 0 auto;
+  width: 10vmin;
+  height: 10vmin;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: large;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 10%;
+  border-color: black;
+  border-style: solid;
+}
+
+#skrbl-title{
+  font-family: 'Luckiest Guy', cursive;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  color: black;
+  text-decoration: none;
 }
