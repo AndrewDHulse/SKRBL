@@ -17,8 +17,8 @@ async function index(req, res){
     try{
     const posts = await Post.find({})
     .populate('user')
-    .populate('prompt')
-    res.render('posts/index', {posts});
+    .populate('prompt');
+    res.render('posts/index', {posts, user: req.user});
     } catch (err) {
         console.log(err)
         res.render('/posts')

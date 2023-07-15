@@ -8,7 +8,7 @@ a {
 }
 
 nav{
-  position: ;
+  position:sticky ;
 }
 
  /* login info */
@@ -30,6 +30,9 @@ nav{
 
 .footer{
   position: sticky;
+  bottom: 0;
+  padding: 20px;
+  text-align: center;
 }
 
 #post-btn{
@@ -45,6 +48,11 @@ nav{
   border-radius: 10%;
   border-color: black;
   border-style: solid;
+  background-color: white;
+}
+
+#post-btn:hover{
+  transform: scale(1.2);
 }
 
 #skrbl-title{
