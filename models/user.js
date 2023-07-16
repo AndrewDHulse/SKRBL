@@ -8,7 +8,12 @@ const mongoose = require('mongoose');
     required: true
    },
    email: String,
-   avatar: String
+   avatar: String,
+   bio: String,
+   posts: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Post'
+   }]
  }, {
    timestamps: true
  });

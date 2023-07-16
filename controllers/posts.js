@@ -1,5 +1,6 @@
 const Post = require('../models/post');
 const Prompt = require('../models/prompt');
+const User = require('../models/user');
 let randomPrompt = null;
 
 module.exports = {
@@ -55,15 +56,22 @@ async function newPost(req, res){
 
 async function create(req, res){
     try{
-        //ensures randomPrompt is empty first
         if (!randomPrompt){
-            //grab a semi random prompt, limited to 1 
             randomPrompt = await Prompt.aggregate([{ $sample: {size: 1} }]);
         }
         const promptTitle = randomPrompt[0].title;
         const promptContent = randomPrompt[0].content;
         const prompt= randomPrompt[0]._id;
-        const post = await Post.create(req.body);
+       
+        const post = await Post.create({
+            ...req.body,
+            user: req.user._id
+        });
+       
+        const user = await User.findById(req.user._id);
+        user.posts.push(post);
+        await user.save();
+       
         await Post.create(post);
         res.redirect('/posts');
     } catch (err){

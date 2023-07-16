@@ -1,10 +1,11 @@
-const User = require ('../models/user.js');
+const User = require ('../models/user');
+const Post =require ('../models/post')
 
 async function  show (req,res){
     try{
       const user = await User.findById(req.user._id);
-      
-      res.render('users/show', {user});
+      const posts = await Post.find({ user: req.user._id }).sort({ createdAt: -1 }).limit(5);
+      res.render('users/show', {user, posts});
     } catch (err){
         console.log(err)
         res.render('/posts')
