@@ -18,7 +18,6 @@ var usersRouter = require('./routes/users');
 var postsRouter = require('./routes/posts');
 var commentsRouter = require('./routes/comments')
 
-
 var app = express();
 
 // view engine setup
