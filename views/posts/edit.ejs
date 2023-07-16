@@ -4,7 +4,6 @@
     <div class="container my-5 py-5 text-dark">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h2>This is posts/edit</h2>
 
                 <% if (user && user._id.equals(post.user._id)) { %>
                     <form action="/posts/<%= post._id %>?_method=PUT" method="POST">

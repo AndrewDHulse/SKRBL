@@ -2,7 +2,46 @@
 
 <h1>THIS IS users/edit</h1>
 
-
-
+<section class="h-100 gradient-custom-2">
+  <% if (user && user._id.equals(user._id)) { %>
+    <form action="/users/<%= user._id %>?_method=PUT" method="POST">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-lg-9 col-xl-7">
+          <div class="card">
+            <div class="rounded-top text-black d-flex flex-row" style="background-color: #e7effd; height:200px;">
+              <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+                <img src="<%= user.avatar %>" alt="Profile Avatar" class="rounded-circle shadow-1-strong me-3"
+                  style="width: 150px; position: relative; z-index: 1">
+                  <button type="submit" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                    style="position: relative; z-index: 2;">
+                    Update
+                  </button>
+              </div>
+              <div class="ms-3" style="margin-top: 130px;">
+                <label for="user-name-edit" class="form label">Change user name</label>
+                  <input type="text" class="form-control" id="user-name-edit" name="name" value=<%= user.name %> required>
+            </div>
+          </div>
+          <div class="p-4 text-black" style="background-color: #f8f9fa;">
+            <div class="d-flex justify-content-end text-center py-1">
+              <div>
+                <p class="mb-1 h5"><%= user.posts.length %></p>
+                <p class="small text-muted mb-0">SKRBLs</p>
+              </div>
+            </div>
+          </div>
+          <div class="card-body p-4 text-black">
+            <div class="mb-3">
+              <label for="user-bio" class="form label">Edit bio</label>
+              <textarea class="form-control" id="user-bio" rows="5" name="bio"><%=user.bio%></textarea>
+            </div>
+          </form>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <%- include('../partials/footer') %>

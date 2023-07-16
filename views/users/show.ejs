@@ -12,10 +12,12 @@
             <img src="<%= user.avatar %>"
                 alt="Profile Avatar" class="rounded-circle shadow-1-strong me-3"
                 style="width: 150px; z-index: 1">
+          <% if (user && user._id.equals(user._id)) { %>
             <a href="/users/<%= user._id %>/edit" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
                 style="z-index: 1;">
                 Edit profile
                 </a>
+          <% } %>      
             </div>
             <div class="ms-3" style="margin-top: 130px;">
                 <h5><%= user.name %></h5>
@@ -41,7 +43,9 @@
                 <div class="col">
                 <div class="card">
                     <div class="card-body">
-                    <h5 class="card-title"><%= post.title %></h5>
+                    <h5 class="card-title">
+                      <a href="/posts/<%= post._id %>"><%= post.title %></a>
+                    </h5>
                     <p class="card-text"><%= post.content.substring(0, 100) %>...</p>
                     </div>
                   </div>

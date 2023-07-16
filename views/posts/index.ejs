@@ -11,7 +11,9 @@
                             <div class="card-body p-4">
                                 <div>
                                     <h2><%= p.title %></h2>
-                                    <h6>SKRBLed by <%= p.user.name %></h6>
+                                    <h6>SKRBLed by
+                                        <a href= "/users/<%= p.user._id %>"><%= p.user.name %></a>
+                                    </h6>
                                     <p class="small">
                                         <% const localDate = new Date(p.createdAt); %>
                                         <%= localDate.toLocaleDateString() %> <%= localDate.toLocaleTimeString() %>
