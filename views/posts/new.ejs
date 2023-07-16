@@ -2,16 +2,17 @@
 
 <h1>THIS IS POSTS/NEW</h1>
 
-
 <form method="POST" action="/posts">
-    <p>Prompt Content: <%= promptContent %></p>
-    <input type="hidden" name = "prompt" value="<%= prompt._id%>">
-    <input type="hidden" name="user" value="<%= user._id %>">
-    <label> Give your SKRBL a Title:
-        <input type="text" name="title">
-    </label>
-    <textarea name="content" placeholder="SKRBL here!"></textarea>    
-        <button type="submit">Create Post</button>
+  <p>Prompt Content: <%= promptContent %></p>
+  <input type="hidden" name="prompt" value="<%= prompt._id %>">
+  <input type="hidden" name="user" value="<%= user._id %>">
+  <div class="mb-3">
+    <input type="text" class="form-control" id="postTitle" name="title" placeholder="Give your SKRBL a title!" required>
+  </div>
+  <div class="mb-3">
+    <textarea class="form-control" id="postContent" name="content" placeholder="SKRBL here!" rows="5" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Create Post</button>
 </form>
 
 <%- include('../partials/footer') %>

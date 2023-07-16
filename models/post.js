@@ -13,6 +13,7 @@ const commentSchema = new Schema({
         required: true
     },
         userName: String,
+        userAvatar: String,
 }, {
     timestamps: true
 });

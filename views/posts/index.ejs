@@ -4,7 +4,7 @@
     <div class="container my-5 py-5 text-dark">
         <div class="row d-flex justify-content-center">
             <div class="col-md-11 col-lg-9 col-xl-7">
-                <% posts.forEach(function(p) { %>
+                <% posts.reverse().forEach(function(p) { %> 
                     <div class="d-flex flex-start mb-4">
                         <img class="rounded-circle shadow-1-strong me-3" src="<%= p.user.avatar %>" alt="avatar" width="65" height="65" />
                         <div class="card w-100">
@@ -16,8 +16,8 @@
                                         <% const localDate = new Date(p.createdAt); %>
                                         <%= localDate.toLocaleDateString() %> <%= localDate.toLocaleTimeString() %>
                                     </p>
-                                    <% const contentWords = p.content.split(' ').slice(0, 3); %>
-                                    <p><%= contentWords.join(' ') %></p>
+                                    <% const limitedContent = p.content.length > 25 ? p.content.slice(0, 25) + '...' : p.content; %>
+                                    <p><%= limitedContent %></p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <a href="/posts/<%= p._id %>" class="link-muted"><i class="fas fa-reply me-1"></i> Comment</a>
                                     </div>
@@ -30,6 +30,5 @@
         </div>
     </div>
 </section>
-
 
 <%- include('../partials/footer') %>

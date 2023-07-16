@@ -1,9 +1,15 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+const usersCtrl = require('../controllers/users');
+const ensureLoggedIn= require('../config/ensureLoggedIn');
+
+
+//GET /users/:id/edit
+router.get('/users/:id/edit', ensureLoggedIn, usersCtrl.edit);
+//GET posts/:id
+router.get('/users/:id', usersCtrl.show);
+//PUT users/:id
+router.put('/users/:id', usersCtrl.update)
 
 module.exports = router;

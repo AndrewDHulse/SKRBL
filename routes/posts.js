@@ -17,6 +17,6 @@ router.post('/', ensureLoggedIn, postsCtrl.create);
 //DELETE /posts
 router.delete('/:id', ensureLoggedIn, postsCtrl.delete);
 //PUT /posts/:id
-router.put('/:id', postsCtrl.update)
+router.put('/:id',ensureLoggedIn, postsCtrl.update)
 
 module.exports = router;

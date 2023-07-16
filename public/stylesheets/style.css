@@ -14,9 +14,10 @@ nav{
  /* login info */
 .login {
   display: flex;
-  justify-content: right;
+  justify-content: flex-end;
   align-items: center;
   height: 34px;
+  padding: 20px 0;
 }
 
 .login img {
@@ -25,7 +26,8 @@ nav{
 
 .header{
   position: sticky;
-
+  top: 0;
+  z-index: 9999;
 }
 
 .footer{
@@ -58,6 +60,7 @@ nav{
 #skrbl-title{
   font-family: 'Luckiest Guy', cursive;
   margin: 0 auto;
+  padding:20px 0;
   display: flex;
   align-items: center;
   justify-content: center;
