@@ -1,6 +1,7 @@
 const Post = require('../models/post');
 const Prompt = require('../models/prompt');
 const User = require('../models/user');
+const helpers = require('../helpers');
 let randomPrompt = null;
 
 module.exports = {
@@ -30,9 +31,18 @@ async function index(req, res){
 async function show(req, res) {
     try{
     const post = await Post.findById(req.params.id)
+    .populate({
+        path: 'user',
+        select: 'name avatar'
+    })
     .populate('prompt')
-    .populate('user');
-    res.render('posts/show', { title: 'Post View', post, comment: {}, user: req.user});
+    .exec();
+    res.render('posts/show', { 
+        title: 'Post View', 
+        post, 
+        comment: {}, 
+        user: req.user, 
+        getAvatarURL: helpers.getAvatarURL});
     } catch (err) {
         console.log(err);
         res.render('/posts')
