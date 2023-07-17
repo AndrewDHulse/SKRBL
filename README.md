@@ -4,6 +4,8 @@ SKRBL is a social media application in which users are given randomized prompts 
 
 Additionally, as a social media application, users have profiles in which they may add a brief bio. 
 
+<img alt="Screenshot of SKRBL homepage" src=/public/images/SKRBL-Screenshot.png>
+
 ## Getting Started
 
 Click the "Log in" hyperlink displayed in the top-right corner of the screen. To view a post in its entirety, click the "View Post" link. 
