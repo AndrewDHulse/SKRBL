@@ -27,10 +27,10 @@ To Post a SKRBL, click the notebook button promintently displayed on the lower p
 
 Database Management is handled through MongoDB. Three schemas are used in the SKRBL application: Prompts, Posts, and Users, as well as an embedded comments model associated with the posts model. The relationships are as follow:
 
-1 User: Many posts
-1 Prompt: Many posts
-1 Post: Many comments
-1 User: Many comments
+1 User: Many posts   
+1 Prompt: Many posts   
+1 Post: Many comments   
+1 User: Many comments   
 
 Additionally, Users and Posts share a denormalized bidirectional relationship. This relationship is established to allow for more efficient data querying, specifically for showing user data on profile pages. 
 
