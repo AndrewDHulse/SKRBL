@@ -6,6 +6,20 @@ var logger = require('morgan');
 var session = require('express-session');
 var passport= require('passport');
 var methodOverride = require('method-override');
+var multer= require('multer')
+
+const storage=multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/uploads');
+  },
+  filename: function (req, file, cb){
+    const suffix=  Date.now();
+    const fileExt= path.extname(file.originalname);
+    cb(null, file.fieldname + '_' + suffix + fileExt)
+  }
+});
+
+const upload= multer({storage: storage});
 
 require('dotenv').config();
 
@@ -45,6 +59,8 @@ app.use(function (req, res, next) {
   res.locals.user = req.user;
   next();
 });
+
+app.use(upload.single('avatar'));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

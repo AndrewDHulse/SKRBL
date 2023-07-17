@@ -1,5 +1,6 @@
 const User = require ('../models/user');
 const Post =require ('../models/post')
+const upload = require('../server')
 
 async function  show (req,res){
     try{
@@ -26,9 +27,14 @@ async function edit(req, res){
 
 async function update(req, res){
     try{
-        const {name, avatar, bio} = req.body;
+        const {name, bio} = req.body;
         const userId=req.params.id;
-        await User.updateOne({_id: userId}, {name, avatar, bio});
+        let avatar= req.user.avatar;
+        if(req.file){
+            avatar = req.file.filename;
+        }
+
+        await User.findByIdAndUpdate(userId, {name, avatar, bio});
         res.redirect('/users/show');
     }catch (err) {
         console.log(err);
