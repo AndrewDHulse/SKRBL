@@ -42,7 +42,7 @@ async function show(req, res) {
         post, 
         comment: {}, 
         user: req.user, 
-        getAvatarURL: helpers.getAvatarURL});
+   });
     } catch (err) {
         console.log(err);
         res.render('/posts')
