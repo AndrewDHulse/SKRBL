@@ -1,8 +1,12 @@
 <%- include('../partials/header') %>
 
-<h2>Prompted by:</h2>
-<p><%= post.prompt.content %></p>
-
+<div class="card text-center border border-primary shadow-0" style="background-color:#e7effd;">
+    <div class="card-body">
+      <h5 class="card-title"><%= post.prompt.title %></h5>
+      <p class="card-text"><%= post.prompt.content %></p>
+    </div>
+  </div>
+  <br>
 <section style="background-color: #e7effd;">
     <div class="container my-5 py-5">
         <div class="row d-flex justify-content-center">
