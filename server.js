@@ -21,7 +21,6 @@ const storage=multer.diskStorage({
 
 const upload= multer({storage: storage});
 
-const helpers = require('./helpers')
 
 require('dotenv').config();
 
@@ -61,10 +60,6 @@ app.use(function (req, res, next) {
   res.locals.user = req.user;
   next();
 });
-
-app.use(upload.single('avatar'));
-
-app.locals.getAvatarURL = helpers.getAvatarURL;
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

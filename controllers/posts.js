@@ -1,7 +1,6 @@
 const Post = require('../models/post');
 const Prompt = require('../models/prompt');
 const User = require('../models/user');
-const helpers = require('../helpers');
 let randomPrompt = null;
 
 module.exports = {

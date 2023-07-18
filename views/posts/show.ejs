@@ -10,11 +10,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex flex-start align-items-center">
-                            <% if (post.user.avatar) { %>
-                                <img class="rounded-circle shadow-1-strong me-3" src="/uploads/<%= post.user.avatar %>" alt="avatar" width="60" height="60" />
-                            <% } else { %>
-                                <img class="rounded-circle shadow-1-strong me-3" src="<%= getAvatarURL(post.user.avatar) %>" alt="avatar" width="60" height="60" />
-                            <% } %>
+                                <img class="rounded-circle shadow-1-strong me-3" src="<%= (post.user.avatar) %>" alt="avatar" width="60" height="60" />
                             <div>
                                 <h6 class="fw-bold mb-1" style="color: #00B7FF;"><%= post.user.name %></h6>
                                 <h2><%= post.title %></h2> 
@@ -58,11 +54,7 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-11 col-lg-9 col-xl-7">
                         <div class="d-flex flex-start mb-4">
-                            <% if (c.userAvatar) { %>
-                                <img class="rounded-circle shadow-1-strong me-3" src="/uploads/<%= c.userAvatar %>" alt="avatar" width="65" height="65" />
-                            <% } else { %>
                                 <img class="rounded-circle shadow-1-strong me-3" src="<%= c.userAvatar %>" alt="avatar" width="65" height="65" />
-                            <% } %>
                             <div class="card w-100">
                                 <div class="card-body p-4">
                                     <div>
