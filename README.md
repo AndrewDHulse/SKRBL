@@ -8,14 +8,21 @@ Additionally, as a social media application, users have profiles in which they m
 
 ## Getting Started
 
-Start by clicking <a href=https://skrbl-673d033cbc21.herokuapp.com/posts/64b6139e10119609f684e138>This link</a>
+Start by clicking <a href=https://skrbl-673d033cbc21.herokuapp.com/posts>This link</a>   
 
-Click the "Log in" hyperlink displayed in the top-right corner of the screen. To view a post in its entirety, click the "View Post" link. 
+Click the "Log in" hyperlink displayed in the top-right corner of the screen. To view a post in its entirety, click the "View Post" link.    
 
-To comment, fill out the comment form.
+To comment, fill out the comment form.    
 
-To Post a SKRBL, click the notebook button promintently displayed on the lower portion of the screen.
+To Post a SKRBL, click the notebook button promintently displayed on the lower portion of the screen.   
+ 
+## Features 
 
+- Randomly generated prompts called from a seeded database 
+- User Profiles
+- Index of posts
+- Ability to add and delete comments
+- Ability to edit and delete posts
 
 ## Technologies Used
 
