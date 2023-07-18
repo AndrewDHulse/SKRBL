@@ -8,13 +8,14 @@ Additionally, as a social media application, users have profiles in which they m
 
 ## Getting Started
 
+Start by clicking <a href=https://skrbl-673d033cbc21.herokuapp.com/posts/64b6139e10119609f684e138>This link</a>
+
 Click the "Log in" hyperlink displayed in the top-right corner of the screen. To view a post in its entirety, click the "View Post" link. 
 
 To comment, fill out the comment form.
 
 To Post a SKRBL, click the notebook button promintently displayed on the lower portion of the screen.
 
-##
 
 ## Technologies Used
 
@@ -150,3 +151,13 @@ async function create(req, res){
 <img src="https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white">
 
 </div>
+
+## Icebox Features
+
+- Implementation of Quill Rich Text Editor
+- Ability to reply to comments
+- Non-text based writing prompts
+- Ability to sort and filter prompts
+- Ability to follow users and see a feed by users
+- Ability to "Like" posts
+- Ability to view all posts tied to a single prompt
